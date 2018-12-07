@@ -48,7 +48,7 @@ public class ValidacaoTipoPlano implements Processo<PropostaAdesaoResource> {
 		return new Predicate<PropostaAdesaoResource>() {
 			@Override
 			public boolean apply(PropostaAdesaoResource propostaAdesao) {
-				return !propostaAdesao.getTipoValidacao().equals(StepAdesaoEnum.TIPO_PLANO);
+				return !propostaAdesao.getStep().equals(StepAdesaoEnum.TIPO_PLANO);
 			}
 		};
 	}

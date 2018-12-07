@@ -48,7 +48,7 @@ public class ValidacaoDomicilioFiscal implements Processo<PropostaAdesaoResource
 		return new Predicate<PropostaAdesaoResource>() {
 			@Override
 			public boolean apply(PropostaAdesaoResource propostaAdesao) {
-				return !propostaAdesao.getTipoValidacao().equals(StepAdesaoEnum.DOMICILIO_FISCAL);
+				return !propostaAdesao.getStep().equals(StepAdesaoEnum.DOMICILIO_FISCAL);
 			}
 		};
 	}

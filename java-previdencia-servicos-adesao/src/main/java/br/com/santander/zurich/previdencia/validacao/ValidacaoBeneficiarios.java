@@ -48,7 +48,7 @@ public class ValidacaoBeneficiarios implements Processo<PropostaAdesaoResource> 
 		return new Predicate<PropostaAdesaoResource>() {
 			@Override
 			public boolean apply(PropostaAdesaoResource propostaAdesao) {
-				return !propostaAdesao.getTipoValidacao().equals(StepAdesaoEnum.BENEFICIARIOS);
+				return !propostaAdesao.getStep().equals(StepAdesaoEnum.BENEFICIARIOS);
 			}
 		};
 	}

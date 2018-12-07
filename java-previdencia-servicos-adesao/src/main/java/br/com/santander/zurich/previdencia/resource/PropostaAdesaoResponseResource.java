@@ -16,6 +16,15 @@ public class PropostaAdesaoResponseResource implements Serializable {
 	private static final long serialVersionUID = 6670252827950513293L;
 	
 	private List<String> errors;
+	
+	public PropostaAdesaoResponseResource() {
+		super();
+	}
+
+	public PropostaAdesaoResponseResource(final List<String> errors) {
+		super();
+		this.errors = errors;
+	}
 
 	public List<String> getErrors() {
 		if(this.errors == null) {
