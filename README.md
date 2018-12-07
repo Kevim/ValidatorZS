@@ -1,0 +1,2 @@
+# ValidatorZS
+Validação generica
