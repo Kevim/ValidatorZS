@@ -15,7 +15,7 @@ public final class GenericServiceFacade {
 		PropostaAdesaoResponseResource response = null;
 		
 		//TODO MOCK
-		if(StepAdesaoEnum.TIPO_PLANO.equals(propostaAdesao.getTipoValidacao())) {
+		if(StepAdesaoEnum.TIPO_PLANO.equals(propostaAdesao.getStep())) {
 
 			response = new PropostaAdesaoResponseResource();
 			response.getErrors().add("Velho, preenhce o campo tipo do plano...");

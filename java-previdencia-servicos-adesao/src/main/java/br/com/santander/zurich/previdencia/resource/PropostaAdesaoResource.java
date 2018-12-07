@@ -11,7 +11,7 @@ public class PropostaAdesaoResource implements Serializable {
 	
 	private Long codigoProposta;
 	private Long cpf;
-	private StepAdesaoEnum tipoValidacao;
+	private StepAdesaoEnum step;
 	private Integer formaDeclaracaoIR;
 	private Integer modalidade;
 	private Integer prazoInferiorQuatroAnos;
@@ -56,17 +56,17 @@ public class PropostaAdesaoResource implements Serializable {
 	}
 
 	/**
-	 * @return the tipoValidacao
+	 * @return the step
 	 */
-	public StepAdesaoEnum getTipoValidacao() {
-		return tipoValidacao;
+	public StepAdesaoEnum getStep() {
+		return step;
 	}
 
 	/**
-	 * @param tipoValidacao the tipoValidacao to set
+	 * @param step the step to set
 	 */
-	public void setTipoValidacao(StepAdesaoEnum tipoValidacao) {
-		this.tipoValidacao = tipoValidacao;
+	public void setStep(StepAdesaoEnum step) {
+		this.step = step;
 	}
 
 	/**
