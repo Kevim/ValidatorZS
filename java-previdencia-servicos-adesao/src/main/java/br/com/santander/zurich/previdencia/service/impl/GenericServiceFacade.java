@@ -1,5 +1,7 @@
 package br.com.santander.zurich.previdencia.service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Component;
 
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
@@ -15,23 +17,23 @@ import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
 @Component
 public final class GenericServiceFacade {
 
-	
 	public PropostaAdesaoResponseResource executeStep(final PropostaAdesaoResource propostaAdesao) {
 
 		PropostaAdesaoResponseResource response = null;
-		
+
 		try {
-			Processos.<PropostaAdesaoResource> builder()
+			Processos.<PropostaAdesaoResource>builder()
 					.add(ValidacaoTipoPlano.getInstance(), ValidacaoTipoPlano.deveExecutar())
 					.add(ValidacaoTributacao.getInstance(), ValidacaoTributacao.deveExecutar())
 					.add(ValidacaoBeneficiarios.getInstance(), ValidacaoBeneficiarios.deveExecutar())
 					.add(ValidacaoDomicilioFiscal.getInstance(), ValidacaoDomicilioFiscal.deveExecutar())
 					.add(ValidacaoFundosInvestimento.getInstance(), ValidacaoFundosInvestimento.deveExecutar())
-					.build().executar(propostaAdesao);
+					.build()
+					.executar(propostaAdesao);
 		} catch (ExecucaoProcessoException e) {
-			e.printStackTrace();
+			response = new PropostaAdesaoResponseResource(new ArrayList<String>(e.getMensagens()));
 		}
-		
+
 		return response;
 	}
 
