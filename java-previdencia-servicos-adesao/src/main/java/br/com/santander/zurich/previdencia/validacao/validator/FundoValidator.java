@@ -8,10 +8,10 @@ import br.com.santander.zurich.previdencia.resource.FundoResource;
 public class FundoValidator implements Validator<FundoResource> {
 
 	@Override
-	public ValidationResult validate(FundoResource FundoResource) {
+	public ValidationResult validate(FundoResource fundoResource) {
 		return ValidatorBuilder.validateBean(FundoResource.class).validateProperty("codigoFundo").notNull()
 				.validateProperty("valorMinimo").notNull().validateProperty("percentualContribuicao").build()
-				.validate(FundoResource);
+				.validate(fundoResource);
 	}
 
 }

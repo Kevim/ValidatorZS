@@ -26,10 +26,10 @@ public class ValidacaoTributacao implements Processo<PropostaAdesaoResource> {
 	}
 
 	@Override
-	public void executar(PropostaAdesaoResource PropostaAdesaoResource) throws ExecucaoProcessoException {
+	public void executar(PropostaAdesaoResource propostaAdesaoResource) throws ExecucaoProcessoException {
 
 		// Obtém o validador
-		ValidationResult resultadoValidacao = new TributacaoValidator().validate(PropostaAdesaoResource);
+		ValidationResult resultadoValidacao = new TributacaoValidator().validate(propostaAdesaoResource);
 
 		if (resultadoValidacao.hasErrors()) {
 //			LOGGER.debug("Ocorreram erros durante a validação da Solicitação de orçamento: "

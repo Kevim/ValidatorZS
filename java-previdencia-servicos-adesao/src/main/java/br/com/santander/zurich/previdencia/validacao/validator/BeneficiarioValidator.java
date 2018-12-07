@@ -8,7 +8,7 @@ import br.com.santander.zurich.previdencia.resource.BeneficiarioResource;
 public class BeneficiarioValidator implements Validator<BeneficiarioResource> {
 
 	@Override
-	public ValidationResult validate(BeneficiarioResource BeneficiarioResource) {
+	public ValidationResult validate(BeneficiarioResource beneficiarioResource) {
 		return ValidatorBuilder.validateBean(BeneficiarioResource.class)
 				.validateProperty("cpf").notNull()
 				.validateProperty("nomeCompleto").notNull()
@@ -17,7 +17,7 @@ public class BeneficiarioValidator implements Validator<BeneficiarioResource> {
 				.validateProperty("genero").notNull()
 				.validateProperty("percentualAcumulacao").notNull()
 				.build()
-				.validate(BeneficiarioResource);
+				.validate(beneficiarioResource);
 	}
 
 }

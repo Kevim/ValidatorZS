@@ -10,12 +10,12 @@ import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 public class BeneficiariosValidator implements Validator<PropostaAdesaoResource> {
 
 	@Override
-	public ValidationResult validate(PropostaAdesaoResource PropostaAdesaoResource) {
+	public ValidationResult validate(PropostaAdesaoResource propostaAdesaoResource) {
 		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class)
 				.validateProperty("beneficiarios").notNull().notEmpty()
 				.with(new ArrayElementValidator<BeneficiarioResource>(new BeneficiarioValidator()))
 				.build()
-				.validate(PropostaAdesaoResource);
+				.validate(propostaAdesaoResource);
 	}
 
 }

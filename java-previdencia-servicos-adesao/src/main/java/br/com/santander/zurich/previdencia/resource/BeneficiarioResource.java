@@ -3,15 +3,17 @@ package br.com.santander.zurich.previdencia.resource;
 import java.io.Serializable;
 import java.sql.Date;
 
+import br.com.santander.zurich.previdencia.enums.SexoEnum;
+
 public class BeneficiarioResource implements Serializable {
 
 	private static final long serialVersionUID = -1774657477532427566L;
-	
+
 	private Long cpf;
 	private String nomeCompleto;
 	private Date dataNascimento;
 	private Integer grauParentesco;
-	private Integer genero;
+	private SexoEnum genero;
 	private Double percentualAcumulacao;
 
 	/**
@@ -80,14 +82,14 @@ public class BeneficiarioResource implements Serializable {
 	/**
 	 * @return the genero
 	 */
-	public Integer getGenero() {
+	public SexoEnum getGenero() {
 		return genero;
 	}
 
 	/**
 	 * @param genero the genero to set
 	 */
-	public void setGenero(Integer genero) {
+	public void setGenero(SexoEnum genero) {
 		this.genero = genero;
 	}
 

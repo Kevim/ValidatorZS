@@ -8,10 +8,10 @@ import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 public class TipoPlanoValidator implements Validator<PropostaAdesaoResource> {
 
 	@Override
-	public ValidationResult validate(PropostaAdesaoResource PropostaAdesaoResource) {
+	public ValidationResult validate(PropostaAdesaoResource propostaAdesaoResource) {
 		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class)
 				.validateProperty("formaDeclaracaoIR").notNull().validateProperty("modalidade").notNull().build()
-				.validate(PropostaAdesaoResource);
+				.validate(propostaAdesaoResource);
 	}
 
 }

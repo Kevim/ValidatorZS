@@ -1,5 +1,7 @@
 package br.com.santander.zurich.previdencia.service;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +40,7 @@ public final class GenericAdesaoService implements RestService {
 	@RequestMapping(method=RequestMethod.POST, 
 					path="/generic-adesao-service")
 	public ResponseEntity<PropostaAdesaoResponseResource> execute(
-									@RequestBody final PropostaAdesaoResource propostaAdesao){
+									@Valid @RequestBody final PropostaAdesaoResource propostaAdesao){
 		
 		ResponseEntity<PropostaAdesaoResponseResource> response = null;
 		

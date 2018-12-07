@@ -27,7 +27,7 @@ public class ApiValidationExceptionHandler extends ResponseEntityExceptionHandle
 		errors.add(exception.getBindingResult().getFieldErrors().stream().findFirst().get().getDefaultMessage());
 		
           
-          return new ResponseEntity<>(status);
+          return new ResponseEntity<>(errors, status);
 //          
 //          final List<ErrorDTO> apiFieldErrors = bindingResult.getFieldErrors().stream()
 //                       .map(fieldError -> conversionService.convert(fieldError, ErrorDTO.class)).collect(Collectors.toList());

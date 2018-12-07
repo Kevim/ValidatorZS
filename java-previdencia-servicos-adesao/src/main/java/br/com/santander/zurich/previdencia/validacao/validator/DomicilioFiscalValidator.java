@@ -8,9 +8,9 @@ import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 public class DomicilioFiscalValidator implements Validator<PropostaAdesaoResource> {
 
 	@Override
-	public ValidationResult validate(PropostaAdesaoResource PropostaAdesaoResource) {
+	public ValidationResult validate(PropostaAdesaoResource propostaAdesaoResource) {
 		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class).validateProperty("residenteFiscalExterior")
-				.notNull().build().validate(PropostaAdesaoResource);
+				.notNull().build().validate(propostaAdesaoResource);
 	}
 
 }
