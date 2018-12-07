@@ -32,7 +32,6 @@ public class PropostaAdesaoResource implements Serializable {
 	 * 
 	 */
 	public PropostaAdesaoResource() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

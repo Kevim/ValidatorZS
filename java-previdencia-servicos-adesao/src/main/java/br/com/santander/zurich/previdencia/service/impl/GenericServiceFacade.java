@@ -21,7 +21,6 @@ public final class GenericServiceFacade {
 
 		PropostaAdesaoResponseResource response = null;
 		
-<<<<<<< HEAD
 		try {
 			Processos.<PropostaAdesaoResource> builder()
 					//.add(ValidacaoPropostaAdesao.getInstance())
@@ -34,15 +33,6 @@ public final class GenericServiceFacade {
 		} catch (ExecucaoProcessoException e) {
 			e.printStackTrace();
 		}
-=======
-		//TODO MOCK
-		if(StepAdesaoEnum.TIPO_PLANO.equals(propostaAdesao.getStep())) {
-
-			response = new PropostaAdesaoResponseResource();
-			response.getErrors().add("Velho, preenhce o campo tipo do plano...");
-			response.getErrors().add("Aproveita e preenche o resto dos campos certo carai");
-		} 
->>>>>>> branch 'master' of https://github.com/Kevim/ValidatorZS.git
 		
 		return response;
 	}
