@@ -9,7 +9,6 @@ import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResponseResour
 import br.com.santander.zurich.previdencia.validacao.ValidacaoBeneficiarios;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoDomicilioFiscal;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoFundosInvestimento;
-import br.com.santander.zurich.previdencia.validacao.ValidacaoPropostaAdesao;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTipoPlano;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
 
@@ -23,7 +22,6 @@ public final class GenericServiceFacade {
 		
 		try {
 			Processos.<PropostaAdesaoResource> builder()
-					//.add(ValidacaoPropostaAdesao.getInstance())
 					.add(ValidacaoTipoPlano.getInstance(), ValidacaoTipoPlano.deveExecutar())
 					.add(ValidacaoTributacao.getInstance(), ValidacaoTributacao.deveExecutar())
 					.add(ValidacaoBeneficiarios.getInstance(), ValidacaoBeneficiarios.deveExecutar())
