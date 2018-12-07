@@ -1,11 +1,16 @@
-package br.com.santander.zurich.previdencia.dtos;
+package br.com.santander.zurich.previdencia.resource;
 
-public class FundoDTO {
+import java.io.Serializable;
+
+public class FundoResource implements Serializable {
+	
+	private static final long serialVersionUID = 7366618369993125104L;
+	
 	private Long codigoFundo;
 	private Double valorMinimo;
 	private Double percentualContribuicao;
 
-	public FundoDTO() {
+	public FundoResource() {
 		super();
 	}
 

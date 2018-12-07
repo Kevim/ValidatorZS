@@ -1,25 +1,29 @@
-package br.com.santander.zurich.previdencia.dtos;
+package br.com.santander.zurich.previdencia.resource;
 
+import java.io.Serializable;
 import java.util.List;
 
-import br.com.santander.zurich.previdencia.enums.TipoValidacaoEnum;
+import br.com.santander.zurich.previdencia.enums.StepAdesaoEnum;
 
-public class PropostaAdesaoDTO {
+public class PropostaAdesaoResource implements Serializable {
+	
+	private static final long serialVersionUID = -999032162535418569L;
+	
 	private Long codigoProposta;
 	private Long cpf;
-	private TipoValidacaoEnum tipoValidacao;
+	private StepAdesaoEnum tipoValidacao;
 	private Integer formaDeclaracaoIR;
 	private Integer modalidade;
 	private Integer prazoInferiorQuatroAnos;
 	private Integer tipoTributacao;
 	private Boolean residenteFiscalExterior;
-	private List<FundoDTO> fundosInvestimento;
-	private List<BeneficiarioDTO> beneficiarios;
+	private List<FundoResource> fundosInvestimento;
+	private List<BeneficiarioResource> beneficiarios;
 
 	/**
 	 * 
 	 */
-	public PropostaAdesaoDTO() {
+	public PropostaAdesaoResource() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -54,14 +58,14 @@ public class PropostaAdesaoDTO {
 	/**
 	 * @return the tipoValidacao
 	 */
-	public TipoValidacaoEnum getTipoValidacao() {
+	public StepAdesaoEnum getTipoValidacao() {
 		return tipoValidacao;
 	}
 
 	/**
 	 * @param tipoValidacao the tipoValidacao to set
 	 */
-	public void setTipoValidacao(TipoValidacaoEnum tipoValidacao) {
+	public void setTipoValidacao(StepAdesaoEnum tipoValidacao) {
 		this.tipoValidacao = tipoValidacao;
 	}
 
@@ -138,28 +142,28 @@ public class PropostaAdesaoDTO {
 	/**
 	 * @return the fundosInvestimento
 	 */
-	public List<FundoDTO> getFundosInvestimento() {
+	public List<FundoResource> getFundosInvestimento() {
 		return fundosInvestimento;
 	}
 
 	/**
 	 * @param fundosInvestimento the fundosInvestimento to set
 	 */
-	public void setFundosInvestimento(List<FundoDTO> fundosInvestimento) {
+	public void setFundosInvestimento(List<FundoResource> fundosInvestimento) {
 		this.fundosInvestimento = fundosInvestimento;
 	}
 
 	/**
 	 * @return the beneficiarios
 	 */
-	public List<BeneficiarioDTO> getBeneficiarios() {
+	public List<BeneficiarioResource> getBeneficiarios() {
 		return beneficiarios;
 	}
 
 	/**
 	 * @param beneficiarios the beneficiarios to set
 	 */
-	public void setBeneficiarios(List<BeneficiarioDTO> beneficiarios) {
+	public void setBeneficiarios(List<BeneficiarioResource> beneficiarios) {
 		this.beneficiarios = beneficiarios;
 	}
 
