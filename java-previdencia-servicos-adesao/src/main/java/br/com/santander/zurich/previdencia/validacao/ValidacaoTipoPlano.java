@@ -3,8 +3,8 @@ package br.com.santander.zurich.previdencia.validacao;
 import com.google.common.base.Predicate;
 
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
-import br.com.santander.zurich.previdencia.dtos.PropostaAdesaoDTO;
-import br.com.santander.zurich.previdencia.enums.TipoValidacaoEnum;
+import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
+import br.com.santander.zurich.previdencia.enums.StepAdesaoEnum;
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
 import br.com.santander.zurich.previdencia.processo.Processo;
 import br.com.santander.zurich.previdencia.validacao.validator.TipoPlanoValidator;
@@ -13,7 +13,7 @@ import br.com.santander.zurich.previdencia.validacao.validator.TipoPlanoValidato
  * responsável por aplicar as validações para garantir a consistência do
  * orçamento enviado antes da chamada do cálculo do orçamento.
  */
-public class ValidacaoTipoPlano implements Processo<PropostaAdesaoDTO> {
+public class ValidacaoTipoPlano implements Processo<PropostaAdesaoResource> {
 
 	private static final ValidacaoTipoPlano INSTANCE = new ValidacaoTipoPlano();
 
@@ -26,10 +26,10 @@ public class ValidacaoTipoPlano implements Processo<PropostaAdesaoDTO> {
 	}
 
 	@Override
-	public void executar(PropostaAdesaoDTO propostaAdesaoDTO) throws ExecucaoProcessoException {
+	public void executar(PropostaAdesaoResource PropostaAdesaoResource) throws ExecucaoProcessoException {
 
 		// Obtém o validador
-		ValidationResult resultadoValidacao = new TipoPlanoValidator().validate(propostaAdesaoDTO);
+		ValidationResult resultadoValidacao = new TipoPlanoValidator().validate(PropostaAdesaoResource);
 
 		if (resultadoValidacao.hasErrors()) {
 //			LOGGER.debug("Ocorreram erros durante a validação da Solicitação de orçamento: "
@@ -44,11 +44,11 @@ public class ValidacaoTipoPlano implements Processo<PropostaAdesaoDTO> {
 	 * Regra de execução do Processo. não deve ser executado para endosso de
 	 * cancelamento.
 	 */
-	public static Predicate<PropostaAdesaoDTO> deveExecutar() {
-		return new Predicate<PropostaAdesaoDTO>() {
+	public static Predicate<PropostaAdesaoResource> deveExecutar() {
+		return new Predicate<PropostaAdesaoResource>() {
 			@Override
-			public boolean apply(PropostaAdesaoDTO propostaAdesao) {
-				return !propostaAdesao.getTipoValidacao().equals(TipoValidacaoEnum.TIPO_PLANO);
+			public boolean apply(PropostaAdesaoResource propostaAdesao) {
+				return !propostaAdesao.getTipoValidacao().equals(StepAdesaoEnum.TIPO_PLANO);
 			}
 		};
 	}
