@@ -1,9 +1,12 @@
-package br.com.santander.zurich.previdencia.dtos;
+package br.com.santander.zurich.previdencia.resource;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class BeneficiarioDTO {
+public class BeneficiarioResource implements Serializable {
 
+	private static final long serialVersionUID = -1774657477532427566L;
+	
 	private Long cpf;
 	private String nomeCompleto;
 	private Date dataNascimento;
@@ -14,7 +17,7 @@ public class BeneficiarioDTO {
 	/**
 	 * 
 	 */
-	public BeneficiarioDTO() {
+	public BeneficiarioResource() {
 		// TODO Auto-generated constructor stub
 	}
 
