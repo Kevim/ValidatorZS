@@ -17,8 +17,9 @@ public class PropostaAdesaoResponseResource implements Serializable {
 	
 	private List<String> errors;
 	
-	public PropostaAdesaoResponseResource() {
+	public PropostaAdesaoResponseResource(final String mensagem) {
 		super();
+		this.getErrors().add(mensagem);
 	}
 
 	public PropostaAdesaoResponseResource(final List<String> errors) {

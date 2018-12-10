@@ -1,5 +1,7 @@
 package br.com.santander.zurich.previdencia.service.impl;
 
+import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -22,12 +24,13 @@ import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
 @Component
 public final class GenericServiceFacade {
 
+
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
-	
+
 	public PropostaAdesaoResponseResource executeStep(final PropostaAdesaoResource propostaAdesao) {
 
 		PropostaAdesaoResponseResource response = null;
-		
+
 		try {
 			
 			LOGGER.debug("Processando o Step : " + propostaAdesao.getStep());
@@ -41,13 +44,10 @@ public final class GenericServiceFacade {
 					.add(ValidacaoFundosInvestimento.getInstance(), ValidacaoFundosInvestimento.deveExecutar())
 					.build().executar(propostaAdesao);
 			
-			
-			
-			
 		} catch (ExecucaoProcessoException e) {
-			e.printStackTrace();
+			response = new PropostaAdesaoResponseResource(new ArrayList<String>(e.getMensagens()));
 		}
-		
+
 		return response;
 	}
 
