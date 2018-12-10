@@ -1,6 +1,6 @@
 package br.com.santander.zurich.previdencia.validacao.validators;
 
-import br.com.santander.zurich.previdencia.api.validacao.ArrayElementValidator;
+import br.com.santander.zurich.previdencia.api.validacao.CollectionElementValidator;
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
 import br.com.santander.zurich.previdencia.api.validacao.Validator;
 import br.com.santander.zurich.previdencia.api.validacao.builder.ValidatorBuilder;
@@ -13,7 +13,7 @@ public class BeneficiariosValidator implements Validator<PropostaAdesaoResource>
 	public ValidationResult validate(PropostaAdesaoResource propostaAdesaoResource) {
 		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class)
 				.validateProperty("beneficiarios").notNull().notEmpty()
-				.with(new ArrayElementValidator<BeneficiarioResource>(new BeneficiarioValidator()))
+				.with(new CollectionElementValidator<BeneficiarioResource>(new BeneficiarioValidator()))
 				.build()
 				.validate(propostaAdesaoResource);
 	}
