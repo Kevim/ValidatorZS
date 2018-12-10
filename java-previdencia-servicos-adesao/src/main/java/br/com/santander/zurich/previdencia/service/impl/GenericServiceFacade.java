@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import br.com.santander.zurich.previdencia.exception.StepAdesaoException;
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
 import br.com.santander.zurich.previdencia.processo.Processos;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResponseResource;
+import br.com.santander.zurich.previdencia.service.steps.StepAdesao;
+import br.com.santander.zurich.previdencia.service.steps.StepAdesaoFactory;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoBeneficiarios;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoContato;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoDomicilioFiscal;
@@ -48,8 +52,21 @@ public final class GenericServiceFacade {
 					.add(ValidacaoContato.getInstance(), ValidacaoContato.deveExecutar())
 					.build().executar(propostaAdesao);
 			
+			//-- Executa o step 
+			final StepAdesao step = StepAdesaoFactory.criarStep(propostaAdesao.getStep());
+			response = step.executeStepAdesao(propostaAdesao);
+			
+			
 		} catch (ExecucaoProcessoException e) {
-			response = new PropostaAdesaoResponseResource(new ArrayList<String>(e.getMensagens()));
+			
+			LOGGER.warn("Ocorreram erros de validação: "+ e.getMensagens());
+			response = new PropostaAdesaoResponseResource(new ArrayList<String>(e.getMensagens()), HttpStatus.BAD_REQUEST.value());
+			
+		} catch (StepAdesaoException e) {
+			
+			LOGGER.warn("Ocorreram erros na execução do step ["+ propostaAdesao.getStep() +"]",  e.getMessage());
+			response = new PropostaAdesaoResponseResource(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+			
 		}
 
 		return response;
