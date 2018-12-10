@@ -1,5 +1,7 @@
 package br.com.santander.zurich.previdencia.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
@@ -12,15 +14,25 @@ import br.com.santander.zurich.previdencia.validacao.ValidacaoFundosInvestimento
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTipoPlano;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
 
+/**
+ * Facade responsável por executar o step requisitado.
+ * 
+ * @author Andre Dornelas
+ */
 @Component
 public final class GenericServiceFacade {
 
+	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 	
 	public PropostaAdesaoResponseResource executeStep(final PropostaAdesaoResource propostaAdesao) {
 
 		PropostaAdesaoResponseResource response = null;
 		
 		try {
+			
+			LOGGER.debug("Processando o Step : " + propostaAdesao.getStep());
+			
+			//-- Executa os processos de validação do Step
 			Processos.<PropostaAdesaoResource> builder()
 					.add(ValidacaoTipoPlano.getInstance(), ValidacaoTipoPlano.deveExecutar())
 					.add(ValidacaoTributacao.getInstance(), ValidacaoTributacao.deveExecutar())
@@ -28,6 +40,10 @@ public final class GenericServiceFacade {
 					.add(ValidacaoDomicilioFiscal.getInstance(), ValidacaoDomicilioFiscal.deveExecutar())
 					.add(ValidacaoFundosInvestimento.getInstance(), ValidacaoFundosInvestimento.deveExecutar())
 					.build().executar(propostaAdesao);
+			
+			
+			
+			
 		} catch (ExecucaoProcessoException e) {
 			e.printStackTrace();
 		}
