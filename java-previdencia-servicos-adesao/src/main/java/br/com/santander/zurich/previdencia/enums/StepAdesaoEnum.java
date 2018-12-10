@@ -2,7 +2,7 @@ package br.com.santander.zurich.previdencia.enums;
 
 public enum StepAdesaoEnum {
 	
-	TIPO_PLANO(1), TRIBUTACAO(2), FUNDO_INVESTIMENTOS(3), BENEFICIARIOS(4), DOMICILIO_FISCAL(5);
+	TIPO_PLANO(1), TRIBUTACAO(2), FUNDO_INVESTIMENTOS(3), BENEFICIARIOS(4), DOMICILIO_FISCAL(5), PAGAMENTO(6), CONTATO(7);
 
 	private final Integer codigo;
 

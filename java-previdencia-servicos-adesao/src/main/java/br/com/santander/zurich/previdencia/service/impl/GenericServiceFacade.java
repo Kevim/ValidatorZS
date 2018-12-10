@@ -11,8 +11,10 @@ import br.com.santander.zurich.previdencia.processo.Processos;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResponseResource;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoBeneficiarios;
+import br.com.santander.zurich.previdencia.validacao.ValidacaoContato;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoDomicilioFiscal;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoFundosInvestimento;
+import br.com.santander.zurich.previdencia.validacao.ValidacaoPagamento;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTipoPlano;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
 
@@ -42,6 +44,8 @@ public final class GenericServiceFacade {
 					.add(ValidacaoBeneficiarios.getInstance(), ValidacaoBeneficiarios.deveExecutar())
 					.add(ValidacaoDomicilioFiscal.getInstance(), ValidacaoDomicilioFiscal.deveExecutar())
 					.add(ValidacaoFundosInvestimento.getInstance(), ValidacaoFundosInvestimento.deveExecutar())
+					.add(ValidacaoPagamento.getInstance(), ValidacaoPagamento.deveExecutar())
+					.add(ValidacaoContato.getInstance(), ValidacaoContato.deveExecutar())
 					.build().executar(propostaAdesao);
 			
 		} catch (ExecucaoProcessoException e) {

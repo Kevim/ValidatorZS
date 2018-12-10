@@ -1,18 +1,19 @@
-package br.com.santander.zurich.previdencia.validacao.validator;
+package br.com.santander.zurich.previdencia.validacao.validators;
 
 import br.com.santander.zurich.previdencia.api.validacao.ArrayElementValidator;
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
 import br.com.santander.zurich.previdencia.api.validacao.Validator;
 import br.com.santander.zurich.previdencia.api.validacao.builder.ValidatorBuilder;
-import br.com.santander.zurich.previdencia.resource.FundoResource;
+import br.com.santander.zurich.previdencia.resource.BeneficiarioResource;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
 
-public class FundoInvestimentoValidator implements Validator<PropostaAdesaoResource> {
+public class BeneficiariosValidator implements Validator<PropostaAdesaoResource> {
 
 	@Override
 	public ValidationResult validate(PropostaAdesaoResource propostaAdesaoResource) {
-		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class).validateProperty("fundosInvestimento").notNull()
-				.notEmpty().with(new ArrayElementValidator<FundoResource>(new FundoValidator()))
+		return ValidatorBuilder.validateBean(PropostaAdesaoResource.class)
+				.validateProperty("beneficiarios").notNull().notEmpty()
+				.with(new ArrayElementValidator<BeneficiarioResource>(new BeneficiarioValidator()))
 				.build()
 				.validate(propostaAdesaoResource);
 	}

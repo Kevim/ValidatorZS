@@ -6,43 +6,44 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Predicate;
 
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
-import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
-import br.com.santander.zurich.previdencia.validacao.validators.DomicilioFiscalValidator;
 import br.com.santander.zurich.previdencia.enums.StepAdesaoEnum;
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
 import br.com.santander.zurich.previdencia.processo.Processo;
+import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
+import br.com.santander.zurich.previdencia.validacao.validators.PagamentoValidator;
 
-public class ValidacaoDomicilioFiscal implements Processo<PropostaAdesaoResource> {
+public class ValidacaoPagamento implements Processo<PropostaAdesaoResource> {
+	
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-	private static final ValidacaoDomicilioFiscal INSTANCE = new ValidacaoDomicilioFiscal();
+	private static final ValidacaoPagamento INSTANCE = new ValidacaoPagamento();
 
-	public static ValidacaoDomicilioFiscal getInstance() {
+	public static ValidacaoPagamento getInstance() {
 		return INSTANCE;
 	}
 
-	private ValidacaoDomicilioFiscal() {
+	private ValidacaoPagamento() {
 	}
 
 	@Override
-	public void executar(PropostaAdesaoResource propostaAdesaoResource) throws ExecucaoProcessoException {
+	public void executar(PropostaAdesaoResource propostaAdesao) throws ExecucaoProcessoException {
 
-		ValidationResult resultadoValidacao = new DomicilioFiscalValidator().validate(propostaAdesaoResource);
+		ValidationResult resultadoValidacao = new PagamentoValidator().validate(propostaAdesao.getPagamento());
 
 		if (resultadoValidacao.hasErrors()) {
-			LOGGER.debug("Ocorreram erros durante a validação de Domicilio Fiscal: "
+			LOGGER.debug("Ocorreram erros durante a validação de Pagamento: "
 					+ resultadoValidacao.errorMessages());
 			throw new ExecucaoProcessoException(resultadoValidacao.errorMessages());
 		}
 
-		LOGGER.debug("Validação de Domicilio Fiscal executada sem erros.");
+		LOGGER.debug("Validação da Pagamento executada sem erros.");
 	}
 
 	public static Predicate<PropostaAdesaoResource> deveExecutar() {
 		return new Predicate<PropostaAdesaoResource>() {
 			@Override
 			public boolean apply(PropostaAdesaoResource propostaAdesao) {
-				return propostaAdesao.getStep().equals(StepAdesaoEnum.DOMICILIO_FISCAL);
+				return propostaAdesao.getStep().equals(StepAdesaoEnum.PAGAMENTO);
 			}
 		};
 	}

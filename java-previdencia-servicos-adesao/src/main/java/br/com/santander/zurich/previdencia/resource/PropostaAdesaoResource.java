@@ -15,10 +15,10 @@ public class PropostaAdesaoResource implements Serializable {
 
 	private static final long serialVersionUID = -999032162535418569L;
 
-	@NotNull(message="Código da Proposta é obrigatório")
+	@NotNull(message = "Código da Proposta é obrigatório")
 	private Long codigoProposta;
 	private Long cpf;
-	@NotNull(message="Tipo da validação é obrigatório")
+	@NotNull(message = "Tipo da validação é obrigatório")
 	private StepAdesaoEnum step;
 	private TipoImpostoRendaEnum formaDeclaracaoIR;
 	private TipoModalidadeEnum modalidade;
@@ -27,6 +27,36 @@ public class PropostaAdesaoResource implements Serializable {
 	private Boolean residenteFiscalExterior;
 	private List<FundoResource> fundosInvestimento;
 	private List<BeneficiarioResource> beneficiarios;
+	private PagamentoResource pagamento;
+	private ContatoResource contato;
+
+	/**
+	 * @return the pagamento
+	 */
+	public PagamentoResource getPagamento() {
+		return pagamento;
+	}
+
+	/**
+	 * @param pagamento the pagamento to set
+	 */
+	public void setPagamento(PagamentoResource pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	/**
+	 * @return the contato
+	 */
+	public ContatoResource getContato() {
+		return contato;
+	}
+
+	/**
+	 * @param contato the contato to set
+	 */
+	public void setContato(ContatoResource contato) {
+		this.contato = contato;
+	}
 
 	/**
 	 * 

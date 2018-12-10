@@ -1,4 +1,4 @@
-package br.com.santander.zurich.previdencia.validacao.validator;
+package br.com.santander.zurich.previdencia.validacao.validators;
 
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
 import br.com.santander.zurich.previdencia.api.validacao.Validator;

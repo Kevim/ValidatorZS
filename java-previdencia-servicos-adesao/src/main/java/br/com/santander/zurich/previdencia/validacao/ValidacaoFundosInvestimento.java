@@ -7,10 +7,10 @@ import com.google.common.base.Predicate;
 
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
+import br.com.santander.zurich.previdencia.validacao.validators.FundoInvestimentoValidator;
 import br.com.santander.zurich.previdencia.enums.StepAdesaoEnum;
 import br.com.santander.zurich.previdencia.processo.ExecucaoProcessoException;
 import br.com.santander.zurich.previdencia.processo.Processo;
-import br.com.santander.zurich.previdencia.validacao.validator.FundoInvestimentoValidator;
 
 public class ValidacaoFundosInvestimento implements Processo<PropostaAdesaoResource> {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());

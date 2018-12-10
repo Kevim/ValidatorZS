@@ -1,4 +1,4 @@
-package br.com.santander.zurich.previdencia.validacao.validator;
+package br.com.santander.zurich.previdencia.validacao.validators;
 
 import br.com.santander.zurich.previdencia.api.validacao.ValidationResult;
 import br.com.santander.zurich.previdencia.api.validacao.Validator;
@@ -9,9 +9,11 @@ public class FundoValidator implements Validator<FundoResource> {
 
 	@Override
 	public ValidationResult validate(FundoResource fundoResource) {
-		return ValidatorBuilder.validateBean(FundoResource.class).validateProperty("codigoFundo").notNull()
-				.validateProperty("valorMinimo").notNull().validateProperty("percentualContribuicao").build()
-				.validate(fundoResource);
+		return ValidatorBuilder.validateBean(FundoResource.class)
+				.validateProperty("codigoFundo").notNull()
+				.validateProperty("valorMinimo").notNull()
+				.validateProperty("percentualContribuicao").notNull()
+				.build().validate(fundoResource);
 	}
 
 }
