@@ -1,7 +1,8 @@
 package br.com.santander.zurich.previdencia.resource;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import br.com.santander.zurich.previdencia.enums.SexoEnum;
 
@@ -14,7 +15,7 @@ public class BeneficiarioResource implements Serializable {
 	private Date dataNascimento;
 	private Integer grauParentesco;
 	private SexoEnum genero;
-	private Double percentualAcumulacao;
+	private BigDecimal percentualAcumulacao;
 
 	/**
 	 * 
@@ -96,14 +97,14 @@ public class BeneficiarioResource implements Serializable {
 	/**
 	 * @return the percentualAcumulacao
 	 */
-	public Double getPercentualAcumulacao() {
+	public BigDecimal getPercentualAcumulacao() {
 		return percentualAcumulacao;
 	}
 
 	/**
 	 * @param percentualAcumulacao the percentualAcumulacao to set
 	 */
-	public void setPercentualAcumulacao(Double percentualAcumulacao) {
+	public void setPercentualAcumulacao(BigDecimal percentualAcumulacao) {
 		this.percentualAcumulacao = percentualAcumulacao;
 	}
 

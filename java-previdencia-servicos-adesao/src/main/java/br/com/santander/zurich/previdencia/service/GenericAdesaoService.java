@@ -61,8 +61,11 @@ public final class GenericAdesaoService implements RestService {
 		if(propostaResponse == null) {
 			//-- Se estiver null significa que não houve nenhum problema e monta o response vazio e com status OK
 			return new ResponseEntity<PropostaAdesaoResponseResource>(propostaResponse, HttpStatus.OK);
-		} else {
+			
+		} else if(propostaResponse.getHttpStatus().intValue() == HttpStatus.BAD_REQUEST.value()) {
 			return new ResponseEntity<PropostaAdesaoResponseResource>(propostaResponse, HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<PropostaAdesaoResponseResource>(propostaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 

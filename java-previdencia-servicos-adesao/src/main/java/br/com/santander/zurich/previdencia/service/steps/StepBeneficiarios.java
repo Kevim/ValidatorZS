@@ -2,6 +2,7 @@ package br.com.santander.zurich.previdencia.service.steps;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import br.com.santander.zurich.previdencia.exception.StepAdesaoException;
 import br.com.santander.zurich.previdencia.resource.PropostaAdesaoResource;
@@ -28,9 +29,14 @@ public final class StepBeneficiarios implements StepAdesao {
 			//TODO implementar a logica aqui
 			
 			
+			//MOCK - TESTE DE ERROS
+			if(Boolean.TRUE.equals(propostaAdesao.getResidenteFiscalExterior())) {
+				throw new NumberFormatException("Erro forçado para testes...");
+			} 
+			
 		} catch (Exception e) {
 			LOGGER.error("Erro ao executar Step de adesão de Beneficiarios: ", e);
-			response = new PropostaAdesaoResponseResource(e.getMessage());
+			response = new PropostaAdesaoResponseResource(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR.value());
 		}
 		
 		LOGGER.debug("Fim do Step de Beneficiarios");

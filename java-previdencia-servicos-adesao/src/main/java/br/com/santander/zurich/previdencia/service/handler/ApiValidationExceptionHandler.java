@@ -33,7 +33,7 @@ public class ApiValidationExceptionHandler extends ResponseEntityExceptionHandle
 		final List<String> errors = Lists.newArrayList();
 		errors.add(exception.getMessage());
 
-		return new ResponseEntity<>(new PropostaAdesaoResponseResource(errors),HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(new PropostaAdesaoResponseResource(errors, HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
 	}
 	
 	@Override
@@ -47,6 +47,6 @@ public class ApiValidationExceptionHandler extends ResponseEntityExceptionHandle
 		errors.addAll(bindingResult.getGlobalErrors().stream()
 				.map(fieldError -> fieldError.getDefaultMessage()).collect(Collectors.toList()));
 
-		return new ResponseEntity<>(new PropostaAdesaoResponseResource(errors), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(new PropostaAdesaoResponseResource(errors, HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
 	}
 }
