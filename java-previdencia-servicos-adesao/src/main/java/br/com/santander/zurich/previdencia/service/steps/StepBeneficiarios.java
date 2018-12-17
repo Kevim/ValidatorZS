@@ -28,11 +28,11 @@ public final class StepBeneficiarios implements StepAdesao {
 			
 			//TODO implementar a logica aqui
 			
-			
-			//MOCK - TESTE DE ERROS
-			if(Boolean.TRUE.equals(propostaAdesao.getResidenteFiscalExterior())) {
-				throw new NumberFormatException("Erro forçado para testes...");
-			} 
+//			
+//			//MOCK - TESTE DE ERROS
+//			if(Boolean.TRUE.equals(propostaAdesao.getResidenteFiscalExterior())) {
+//				throw new NumberFormatException("Erro forçado para testes...");
+//			} 
 			
 		} catch (Exception e) {
 			LOGGER.error("Erro ao executar Step de adesão de Beneficiarios: ", e);

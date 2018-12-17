@@ -15,10 +15,10 @@ public class PropostaAdesaoResource implements Serializable {
 
 	private static final long serialVersionUID = -999032162535418569L;
 
-	@NotNull(message = "Código da Proposta é obrigatório")
+	// @NotNull(message = "Código da Proposta é obrigatório")
 	private Long codigoProposta;
 	private Long cpf;
-	@NotNull(message = "Tipo da validação é obrigatório")
+	@NotNull(message = "Step é obrigatório")
 	private StepAdesaoEnum step;
 	private TipoImpostoRendaEnum formaDeclaracaoIR;
 	private TipoModalidadeEnum modalidade;
@@ -29,34 +29,9 @@ public class PropostaAdesaoResource implements Serializable {
 	private List<BeneficiarioResource> beneficiarios;
 	private PagamentoResource pagamento;
 	private ContatoResource contato;
-
-	/**
-	 * @return the pagamento
-	 */
-	public PagamentoResource getPagamento() {
-		return pagamento;
-	}
-
-	/**
-	 * @param pagamento the pagamento to set
-	 */
-	public void setPagamento(PagamentoResource pagamento) {
-		this.pagamento = pagamento;
-	}
-
-	/**
-	 * @return the contato
-	 */
-	public ContatoResource getContato() {
-		return contato;
-	}
-
-	/**
-	 * @param contato the contato to set
-	 */
-	public void setContato(ContatoResource contato) {
-		this.contato = contato;
-	}
+	private Integer idade;
+	private Double valorLucro;
+	private Double valorInvestimentoInicial;
 
 	/**
 	 * 
@@ -202,6 +177,76 @@ public class PropostaAdesaoResource implements Serializable {
 	 */
 	public void setBeneficiarios(List<BeneficiarioResource> beneficiarios) {
 		this.beneficiarios = beneficiarios;
+	}
+
+	/**
+	 * @return the pagamento
+	 */
+	public PagamentoResource getPagamento() {
+		return pagamento;
+	}
+
+	/**
+	 * @param pagamento the pagamento to set
+	 */
+	public void setPagamento(PagamentoResource pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	/**
+	 * @return the contato
+	 */
+	public ContatoResource getContato() {
+		return contato;
+	}
+
+	/**
+	 * @param contato the contato to set
+	 */
+	public void setContato(ContatoResource contato) {
+		this.contato = contato;
+	}
+
+	/**
+	 * @return the idade
+	 */
+	public Integer getIdade() {
+		return idade;
+	}
+
+	/**
+	 * @param idade the idade to set
+	 */
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
+	/**
+	 * @return the valorInvestimentoInicial
+	 */
+	public Double getValorInvestimentoInicial() {
+		return valorInvestimentoInicial;
+	}
+
+	/**
+	 * @param valorInvestimentoInicial the valorInvestimentoInicial to set
+	 */
+	public void setValorInvestimentoInicial(Double valorInvestimentoInicial) {
+		this.valorInvestimentoInicial = valorInvestimentoInicial;
+	}
+
+	/**
+	 * @return the valorLucro
+	 */
+	public Double getValorLucro() {
+		return valorLucro;
+	}
+
+	/**
+	 * @param valorLucro the valorLucro to set
+	 */
+	public void setValorLucro(Double valorLucro) {
+		this.valorLucro = valorLucro;
 	}
 
 }

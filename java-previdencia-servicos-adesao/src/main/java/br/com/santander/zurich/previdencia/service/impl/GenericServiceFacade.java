@@ -18,6 +18,9 @@ import br.com.santander.zurich.previdencia.validacao.ValidacaoBeneficiarios;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoContato;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoDomicilioFiscal;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoFundosInvestimento;
+import br.com.santander.zurich.previdencia.validacao.ValidacaoIdadeMaxima;
+import br.com.santander.zurich.previdencia.validacao.ValidacaoInvestimentoMinimo;
+import br.com.santander.zurich.previdencia.validacao.ValidacaoLucroMinimo;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoPagamento;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTipoPlano;
 import br.com.santander.zurich.previdencia.validacao.ValidacaoTributacao;
@@ -50,6 +53,9 @@ public final class GenericServiceFacade {
 					.add(ValidacaoFundosInvestimento.getInstance(), ValidacaoFundosInvestimento.deveExecutar())
 					.add(ValidacaoPagamento.getInstance(), ValidacaoPagamento.deveExecutar())
 					.add(ValidacaoContato.getInstance(), ValidacaoContato.deveExecutar())
+					.add(ValidacaoIdadeMaxima.getInstance(), ValidacaoIdadeMaxima.deveExecutar())
+					.add(ValidacaoLucroMinimo.getInstance(), ValidacaoLucroMinimo.deveExecutar())
+					.add(ValidacaoInvestimentoMinimo.getInstance(), ValidacaoInvestimentoMinimo.deveExecutar())
 					.build().executar(propostaAdesao);
 			
 			//-- Executa o step 
